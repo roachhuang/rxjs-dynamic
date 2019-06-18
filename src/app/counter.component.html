@@ -1,0 +1,68 @@
+<h1>Counter With Container</h1>
+
+<div class="countdownHolder">
+  <span class="position" *ngFor="let d of count | toArray">
+    <span class="digit static">
+      {{ d }}
+    </span>
+  </span>
+</div>
+
+<button type="button" (click)="btnStart$.next($event)">
+  Start
+</button>
+
+<button type="button" (click)="btnPause$.next($event)">
+  Pause
+</button>
+
+<br />
+<!--
+<button type="button" (click)="btnSetTo$.next($event)">
+  Set To
+</button>
+-->
+<label>Set to</label>
+<input
+  type="number"
+  min="0"
+  value="0"
+  (input)="inputSetTo$.next($event.target.value)"
+/>
+
+
+<button type="button" (click)="btnReset$.next($event)">
+  Reset
+</button>
+
+<br />
+
+<button type="button" (click)="btnUp$.next($event)">
+  Count Up
+</button>
+
+<button type="button" (click)="btnDown$.next($event)">
+  Count Down
+</button>
+
+<br />
+
+<label>
+  Tick Speed
+</label>
+<input
+  type="number"
+  min="0"
+  value="{{ (state$ | async)?.tickSpeed }}"
+  (input)="inputTickSpeed$.next($event.target.value)"
+/>
+
+<label>
+  Count Diff
+</label>
+<input
+  type="number"
+  min="0"
+  value="{{ (state$ | async)?.countDiff }}"
+  (input)="inputCountDiff$.next($event.target.value)"
+/>

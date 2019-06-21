@@ -13,7 +13,7 @@ import { NgModel } from '@angular/forms';
 
 export class CounterComponent {
 
-  initialCounterState = {
+  initialCounterState:Istate = {
     isTicking: false,
     count: 0,
     countUp: true,
